@@ -1,0 +1,25 @@
+rules:
+  - id: assistant-skill-dangerous-shell
+    message: Avoid unchecked destructive shell commands in skill repositories.
+    severity: WARNING
+    languages: [generic]
+    patterns:
+      - pattern-either:
+          - pattern: rm -rf ...
+          - pattern: curl ... | bash
+          - pattern: wget ... | bash
+          - pattern: chmod 777 ...
+
+  - id: assistant-skill-policy-bypass-language
+    message: Skill text appears to contain policy or instruction bypass language.
+    severity: ERROR
+    languages: [generic]
+    patterns:
+      - pattern-regex: (?i)(ignore previous instructions|bypass (safety|security|policy|guardrails)|jailbreak)
+
+  - id: assistant-skill-possible-secret
+    message: Possible secret or credential in skill repository.
+    severity: ERROR
+    languages: [generic]
+    patterns:
+      - pattern-regex: (?i)((api|access|auth|secret|private|token|password)[_-]?key|password|secret|token)\s*[:=]\s*['\"]?[A-Za-z0-9_./+=-]{12,}

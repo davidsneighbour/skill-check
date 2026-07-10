@@ -1,0 +1,38 @@
+{
+  "name": "@davidsneighbour/skill-check",
+  "version": "0.1.0",
+  "description": "Local pre-release linting and security checks for assistant skill packages.",
+  "type": "module",
+  "bin": {
+    "skill-check": "./src/cli.js"
+  },
+  "files": [
+    "src",
+    "schemas",
+    "semgrep",
+    "README.md",
+    "RESEARCH.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "check": "npm run test && npm run lint:examples",
+    "lint:examples": "node src/cli.js examples/valid-skill --fail-on error",
+    "lint:all": "node src/cli.js . --fail-on error",
+    "test": "node --test",
+    "smoke": "node src/cli.js --help && node src/cli.js examples/valid-skill --format json"
+  },
+  "keywords": [
+    "skills",
+    "assistant-skills",
+    "skill-check",
+    "agent-skills",
+    "security",
+    "audit",
+    "prompt-injection"
+  ],
+  "author": "Patrick Kollitsch",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.10.0"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "./schemas/skill-check.schema.json",
+  "include": ["**/SKILL.md"],
+  "exclude": [
+    "**/node_modules/**",
+    "**/.git/**",
+    "**/dist/**",
+    "**/coverage/**"
+  ],
+  "failOn": "error",
+  "maxFileSizeBytes": 80000,
+  "maxBodyLines": 800,
+  "rules": {
+    "security/no-dangerous-shell": "warn",
+    "safety/prompt-injection-boundary": "warn",
+    "safety/user-consent-for-side-effects": "warn"
+  }
+}

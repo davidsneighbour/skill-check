@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/skill-check.schema.json",
+  "title": "skill-check configuration",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "include": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "exclude": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "failOn": {
+      "type": "string",
+      "enum": ["error", "warn", "off"]
+    },
+    "maxFileSizeBytes": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "maxBodyLines": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "rules": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "enum": ["off", "info", "warn", "error"]
+      }
+    }
+  }
+}
